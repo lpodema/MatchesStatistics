@@ -26,3 +26,10 @@ class PlayerScoreViewSet(ListModelMixin, RetrieveModelMixin, UpdateModelMixin, G
 class ProfileImageViewSet(ModelViewSet):
     serializer_class = ProfileImageSerializer
     queryset = ProfileImage.objects.all()
+
+
+class PlayerReportViewSet(ListModelMixin, GenericViewSet):
+    serializer_class = PlayerListRetrieveUpdateSerializer
+
+    def get_queryset(self):
+        return Player.objects.filter(active=True).order_by('-score__amount')[:10]

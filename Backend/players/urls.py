@@ -1,7 +1,7 @@
 from django.urls import path
 
 from players.views import PlayerListRetrieveUpdateViewSet, PlayerCreateViewSet, \
-    PlayerScoreViewSet, ProfileImageViewSet
+    PlayerScoreViewSet, ProfileImageViewSet, PlayerReportViewSet
 
 urlpatterns = [
     path('', PlayerListRetrieveUpdateViewSet.as_view({
@@ -28,4 +28,8 @@ urlpatterns = [
         'get': 'retrieve',
         'patch': 'partial_update,'
     }), name='profileimage-retrieve-update'),
+    path('report/', PlayerReportViewSet.as_view({
+        'get': 'list',
+    }), name='best-players-report'),
+
 ]
