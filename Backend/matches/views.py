@@ -8,7 +8,6 @@ from matches.serializers import MatchListRetrieveSerializer, \
 from matches.service import join_match, finish_match
 from rest_framework.response import Response
 from rest_framework import status
-from Backend.helper_functions import parse_uuid
 from Backend.service import play_loop
 from players.service import get_player_from_str_uuid
 

@@ -65,9 +65,6 @@ class TestBackendService(TestCase):
         self.assertEqual(10, Player.objects.count())
         self.assertSetEqual(players, set(Player.objects.all()))
 
-    def test_play_loop(self):
-        pass
-
     @patch('Backend.service.requests.get')
     @patch("Backend.service.new_and_existing_players_qty")
     @patch("Backend.service.randint")
@@ -86,4 +83,3 @@ class TestBackendService(TestCase):
         self.assertIsNotNone(Match.objects.first().date_finished)
         self.assertEqual(10, MatchScore.objects.count())
         self.assertEqual(10, PlayerScore.objects.filter(amount__lte=100, amount__gte=1).count())
-
