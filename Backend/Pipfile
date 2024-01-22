@@ -1,0 +1,29 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==4.2.9"
+django-rest-framework = "*"
+pillow = "*"
+tox-pipenv = "*"
+tox = "<4"
+requests = "*"
+python-decouple = "*"
+mysqlclient = "*"
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+pytest-django = "*"
+coverage = "*"
+flake8 = "*"
+pylint = "*"
+pylint-django = "*"
+tox="<4"
+tox-pipenv-install="*"
+bandit="*"
+
+[requires]
+python_version = "3.11"
