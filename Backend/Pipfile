@@ -12,6 +12,7 @@ tox = "<4"
 requests = "*"
 python-decouple = "*"
 mysqlclient = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 pytest = "*"
