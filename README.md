@@ -2,10 +2,7 @@
 
 
 This project needs Docker and docker-compose installed systemwide.
-Please install docker and docker-compose to continue.
-\
-\
-\
+Please install docker and docker-compose to continue.\
 \
 # To build and run:
 
@@ -29,11 +26,12 @@ WDS_SOCKET_PORT=3038\
 \
 \
 3) Run "npm install" on /Frontend/ directory after those two files are created
-
+\
+\
 4) Run "docker-compose build" in the root directory of the project.\
 This will create the 4 containers used by the app. db, Backend, Frontend, and pythonCronjob
-
-
+\
+\
 5) After the building is finished, execute "docker-compose up" and it should start the services.\
 Go to "http://localhost:3038" to access the WebReport in ReactJS\
 Go to "http://localhost:8088" to access the DRF API REST\
