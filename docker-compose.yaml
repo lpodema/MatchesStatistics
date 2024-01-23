@@ -39,10 +39,11 @@ services:
       context: .
       dockerfile: DockerfileFrontend
     container_name: Frontend
-    command: sh -c "npm start"
+    command: sh -c "npm run start"
     restart: always
     volumes:
       - ./Frontend/:/app/frontend
+      - ./Frontend/node_modules:/app/frontend/node_modules
     ports:
       - "3038:3000"
     expose:
