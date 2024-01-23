@@ -2,7 +2,7 @@ import http.client
 
 
 def make_api_request():
-    api_host = "127.0.0.1"
+    api_host = "backend"
     port = 8000
     api_path = "/match/matchscript/create"
     api_method = "POST"

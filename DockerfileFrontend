@@ -6,4 +6,5 @@ WORKDIR /app/frontend
 COPY ./Frontend/package*.json /app/frontend/
 RUN npm install
 # Copy app files
-COPY ./Frontend/ /app/frontend/
+COPY ./Frontend/src/ /app/frontend/src/
+COPY ./Frontend/public/ /app/frontend/public/

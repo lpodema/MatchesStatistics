@@ -12,7 +12,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - "3306:3306"
+      - "3338:3306"
     healthcheck:
       test: ["CMD", "mysql", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD}", "-e", "SELECT 1"]
       timeout: 20s
@@ -23,14 +23,14 @@ services:
       context: .
       dockerfile: DockerfileBackend
     container_name: Backend
-    command: sh -c "cron && python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
+    command: sh -c "python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
     restart: always
     volumes:
       - ./Backend/:/app/backend
     ports:
-      - "8000:8000"
+      - "8088:8000"
     expose:
-      - "8000"
+      - "8088"
     env_file:
       - ./Backend/.env
     depends_on:
@@ -46,11 +46,27 @@ services:
     volumes:
       - ./Frontend/:/app/frontend
     ports:
-      - "3000:3000"
+      - "3038:3000"
     expose:
-      - "3000"
+      - "3038"
     env_file:
       - ./Frontend/.env
+    depends_on:
+      - backend
+
+  pythoncronjob:
+    build:
+      context: .
+      dockerfile: DockerfileCronjob
+    container_name: pythonCronjob
+    command: sh -c "cron && tail -f /var/log/cron.log"
+    restart: always
+    volumes:
+      - ./Cronjob/:/etc/cron.d/
+    ports:
+      - "5058:80"
+    expose:
+      - "80"
     depends_on:
       - backend
 

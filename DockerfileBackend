@@ -14,13 +14,3 @@ RUN pip install -r requirements.txt
 
 # Copy the project code into the container
 COPY ./Backend/ /app/backend/
-
-RUN apt-get update && apt-get -y install cron
-
-COPY ./Backend/script/script.py /etc/cron.d/script.py
-
-RUN echo "*/5 * * * * /usr/local/bin/python /etc/cron.d/script.py >> /var/log/cron.log 2>&1" > /etc/cron.d/pythoncron
-RUN chmod 0644 /etc/cron.d/pythoncron
-RUN crontab /etc/cron.d/pythoncron
-
-RUN touch /var/log/cron.log

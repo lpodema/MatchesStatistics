@@ -28,8 +28,6 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -143,6 +141,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
+ALLOWED_HOSTS = ['backend', 'localhost']
+
 CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3038',
     'http://localhost:3000',
 ]

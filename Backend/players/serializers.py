@@ -19,13 +19,14 @@ class PlayerScoreSerializer(serializers.ModelSerializer):
 
 
 class PlayerListRetrieveUpdateSerializer(serializers.ModelSerializer):
-    score = serializers.SerializerMethodField()
+    date_joined = serializers.DateTimeField(format='%d/%m/%y, %H:%M:%S')
+    last_played = serializers.DateTimeField(source="score.last_match.date_finished", format='%d/%m/%y, %H:%M:%S')
     profile_img = ProfileImageSerializer()
     score = PlayerScoreSerializer()
 
     class Meta:
         model = Player
-        fields = ['UUID', 'nickname', 'score', 'date_joined', 'active', 'profile_img']
+        fields = ['UUID', 'nickname', 'score', 'date_joined', 'active', 'profile_img', 'last_played']
 
 
 # TODO
