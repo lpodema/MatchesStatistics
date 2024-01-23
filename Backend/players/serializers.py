@@ -22,7 +22,7 @@ class PlayerListRetrieveUpdateSerializer(serializers.ModelSerializer):
     date_joined = serializers.DateTimeField(format='%d/%m/%y, %H:%M:%S')
     last_played = serializers.DateTimeField(source="score.last_match.date_finished", format='%d/%m/%y, %H:%M:%S')
     profile_img = ProfileImageSerializer()
-    score = PlayerScoreSerializer()
+    score = serializers.IntegerField(source="score.amount")
 
     class Meta:
         model = Player

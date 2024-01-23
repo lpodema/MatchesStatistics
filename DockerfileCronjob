@@ -14,10 +14,10 @@ COPY ./Cronjob/ /etc/cron.d/
 RUN apt-get update && apt-get -y install cron
 
 COPY ./Cronjob/script.py /etc/cron.d/script.py
+RUN touch /var/log/cron.log
 
 RUN echo "*/5 * * * * /usr/local/bin/python /etc/cron.d/script.py >> /var/log/cron.log 2>&1" > /etc/cron.d/pythoncron
 RUN chmod 0644 /etc/cron.d/pythoncron
 RUN crontab /etc/cron.d/pythoncron
 
-RUN touch /var/log/cron.log
 RUN cron

@@ -141,7 +141,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-ALLOWED_HOSTS = ['backend', 'localhost']
+ALLOWED_HOSTS = ['backend', 'localhost', 'pythonCronjob']
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3038',
